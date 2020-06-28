@@ -47,8 +47,8 @@
                 url: "/eventUpload",
                 type: "post",
                 data: {
-                    "iDate": iDate,
-                    "iEvent": iEvent
+                    "date": iDate,
+                    "title": iEvent
                 },
                 success: function () {
                     alert("Event uploaded successfully.");
