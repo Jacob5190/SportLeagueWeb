@@ -1,11 +1,13 @@
 package pojo;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Date;
 
 public class CalendarEvent {
 	private String title;
 	private int id;
-	private Date date;
+	private Date startDate;
 
 	public String getTitle () {
 		return title;
@@ -22,12 +24,12 @@ public class CalendarEvent {
 	public void setId (int id) {
 		this.id = id;
 	}
-
-	public Date getDate () {
-		return date;
+	@JsonProperty("start")
+	public Date getStartDate () {
+		return startDate;
 	}
 
-	public void setDate (Date date) {
-		this.date = date;
+	public void setStartDate (Date startDate) {
+		this.startDate = startDate;
 	}
 }

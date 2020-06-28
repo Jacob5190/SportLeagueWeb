@@ -29,7 +29,6 @@
             src='resources/simpleCalendar/javascript/moment.min.js'></script>
     <script
             src='resources/simpleCalendar/javascript/fullcalendar.min.js'></script>
-    <script src="./script.js"></script>
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">
@@ -91,7 +90,7 @@
                     navLinks: true, // can click day/week names to navigate views
                     editable: false,
                     eventLimit: true, // allow "more" link when too many events
-                    events: []
+                    events: <%=request.getAttribute("calendar_events")%>
                 });
             });
         </script>

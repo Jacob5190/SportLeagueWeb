@@ -5,6 +5,9 @@
 <mapper namespace="pojo.CalendarEvent">
     <insert id="insertCalendarEvent" parameterType="pojo.CalendarEvent">
         insert into calendar_event (startDate, title)
-        values (#{startDate}, #{title})
+        values (#{startDate}, #{title});
     </insert>
+    <select id="selectCalendarEvent" resultType="pojo.CalendarEvent">
+        select id as "id", startDate as "startDate", title as "title" from calendar_event;
+    </select>
 </mapper>

@@ -24,6 +24,7 @@
 <body>
     <div class="container" style="margin-top: 10px">
         <div class="jumbotron">
+            <h3>Date - Event Upload</h3>
             <div class="input-group input-group-lg">
                 <span class="input-group-addon">Date</span>
                 <input class="datetimepicker-inline form-control" type="date" id="inputDate">
@@ -37,7 +38,9 @@
                 </span>
             </div>
         </div>
-
+        <div class="jumbotron">
+            <h3>Date - Event Delete</h3>
+        </div>
     </div>
     <script>
         function uploadEvent() {
@@ -47,7 +50,7 @@
                 url: "/eventUpload",
                 type: "post",
                 data: {
-                    "date": iDate,
+                    "startDate": iDate,
                     "title": iEvent
                 },
                 success: function () {
