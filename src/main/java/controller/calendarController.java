@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import pojo.CalendarEvent;
@@ -43,6 +44,26 @@ public class calendarController{
 	public void eventUpload (CalendarEvent calendarEvent) throws IOException {
 		SqlSession session = SessionFactory.getSession();
 		session.insert("insertCalendarEvent",calendarEvent);
+		session.commit();
+		session.close();
+	}
+
+	@RequestMapping("/reqEvent")
+	@ResponseBody
+	public String reqEvent () throws IOException {
+		SqlSession session = SessionFactory.getSession();
+		List<CalendarEvent> resultList = session.selectList("selectCalendarEvent");
+		session.close();
+		ObjectMapper mapper = new ObjectMapper();
+		mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
+		return mapper.writeValueAsString(resultList);
+	}
+
+	@RequestMapping("/delEvent")
+	@ResponseBody
+	public void delEvent (@RequestParam("option") int option) throws IOException {
+		SqlSession session = SessionFactory.getSession();
+		session.delete("deleteCalendarEvent", option);
 		session.commit();
 		session.close();
 	}

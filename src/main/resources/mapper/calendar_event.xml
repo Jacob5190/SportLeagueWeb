@@ -8,6 +8,12 @@
         values (#{startDate}, #{title});
     </insert>
     <select id="selectCalendarEvent" resultType="pojo.CalendarEvent">
-        select id as "id", startDate as "startDate", title as "title" from calendar_event;
+        select id, startDate, title from calendar_event;
     </select>
+    <select id="selectCalendarEventId" resultType="int">
+        select id from calendar_event;
+    </select>
+    <delete id="deleteCalendarEvent">
+        delete from calendar_event where id = #{id};
+    </delete>
 </mapper>

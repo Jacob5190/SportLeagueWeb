@@ -40,7 +40,8 @@ public class galleryController{
 	public String imgUpload (@RequestParam ("picture") MultipartFile picture) throws Exception{
 		String ApplicationPath =
 				ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-		String filePath = ApplicationPath + File.separator + "galleryImages" + File.separator + picture.getOriginalFilename();
+		String filePath =
+				ApplicationPath + File.separator + "galleryImages" + File.separator + picture.getOriginalFilename();
 		picture.transferTo(new File(filePath));
 		return "success";
 	}

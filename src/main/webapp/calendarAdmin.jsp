@@ -40,6 +40,14 @@
         </div>
         <div class="jumbotron">
             <h3>Date - Event Delete</h3>
+            <div class="input-group input-group-lg">
+                <span class="input-group-addon">Delete Event</span>
+                <select id="eventSelect" class="form-control">
+                </select>
+                <span class="input-group-btn">
+                    <button onclick="delEvent()" class="btn btn-danger">Delete</button>
+                </span>
+            </div>
         </div>
     </div>
     <script>
@@ -61,6 +69,47 @@
                 }
             });
         }
+
+        function delEvent() {
+            if (confirm("Do you want to delete this event from calendar?")) {
+                const option = $("#eventSelect option:selected");
+                const optVal = option.val();
+                console.log(optVal);
+                $.ajax({
+                    url: "delEvent",
+                    data: {"option": optVal},
+                    type: "post",
+                    success: function () {
+                        alert("Event delete successfully.");
+                        location.reload();
+                    },
+                    error: function (error) {
+                        console.log(error)
+                    }
+                })
+            }
+        }
+
+        function getEvent() {
+            $.ajax({
+                url: "reqEvent",
+                success: function (data) {
+                    var events = JSON.parse(data);
+                    console.log(events);
+                    var opt = "";
+                    for (i = 0; i < events.length; i++) {
+                        opt += "<option value='" + events[i].id + "'>" + events[i].title + " - " + events[i].start + "</option>\n";
+                    }
+                    $("#eventSelect").html(opt);
+                },
+                error: function (err){
+                    console.log(err);
+                },
+                type: "get"
+            });
+        }
+
+        window.onload = getEvent();
     </script>
 </body>
 </html>

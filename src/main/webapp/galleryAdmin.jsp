@@ -69,17 +69,17 @@
             <span class="input-group-addon">Upload File</span>
             <input type="file" name="picture" id="file" class="form-control">
             <span class="input-group-btn">
-                <button value="Upload" onclick="uploadPics()" class="btn btn-success form-control">Upload</button>
+                <button value="Upload" onclick="uploadPics()" class="btn btn-success">Upload</button>
             </span>
-
         </div>
+
         <ul class="nav nav-list"><li class="divider"></li></ul>
         <div class="input-group input-group-lg">
             <span class="input-group-addon">Delete File</span>
             <select id="imgSelect" class="form-control">
             </select>
             <span class="input-group-btn">
-                <button onclick="delImgs()" class="btn btn-danger form-control">Delete</button>
+                <button onclick="delImgs()" class="btn btn-danger">Delete</button>
             </span>
         </div>
     </div>
