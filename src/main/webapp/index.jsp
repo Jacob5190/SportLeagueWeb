@@ -58,14 +58,12 @@
     </div>
 </nav>
 </div>
-<div style="padding-top: 3%"></div>
-<div class="container-fluid">
-<div class="jumbotron">
+<div style="padding-top: 1%"></div>
+<div class="well well-lg">
     <div class="container">
         <img src="resources/images/home/circle-cropped.png" class="img-responsive center-block" alt="ISL">
         <img src="resources/images/home/mmexport1565765590172.jpg" class="img-responsive center-block" alt="FSS">
     </div>
-</div>
 </div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">

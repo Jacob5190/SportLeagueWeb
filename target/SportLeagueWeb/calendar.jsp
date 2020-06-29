@@ -70,8 +70,8 @@
         </div>
     </div>
 </nav>
-<div style="padding-top: 3%"></div>
-<div class="row container-fluid">
+<div style="padding-top: 1%"></div>
+<div class="row well well-lg">
     <div class="container col-md-3"></div>
     <div class="container col-md-6">
         <div id="calendar"></div>

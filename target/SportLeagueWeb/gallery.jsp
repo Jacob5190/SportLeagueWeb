@@ -57,25 +57,22 @@
         </div>
     </div>
 </nav>
-<div style="padding-top: 3%"></div>
-<div class="container-fluid">
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <%!int length;String[] path;%>
-                <%
-                    length = (int)request.getAttribute("length");
-                    path = new String[length];
-                    for (int i = 0; i < length; i++){
-                    	path[i] = request.getAttribute("filePath"+i).toString();
-                    	out.println("<div class=\"col-md-3\">\n" +
-                                "                    <a href=\"#\" class=\"thumbnail\">\n" +
-                                "                        <img src=\""+ path[i] +"\">\n" +
-                                "                    </a>\n" +
-                                "                </div>");
-                    }
-                %>
-            </div>
+<div style="padding-top: 1%"></div>
+<div class="well well-lg">
+    <div class="container">
+        <div class="row">
+            <%!int length;String[] path;%>
+            <%
+                length = (int)request.getAttribute("length");
+                path = new String[length];
+                for (int i = 0; i < length; i++){
+                	path[i] = request.getAttribute("filePath"+i).toString();
+                	out.println("<div class=\"col-md-3\">\n" +
+                            "                    <a href=\"#\" class=\"thumbnail\">\n" +
+                            "                        <img src=\""+ path[i] +"\">\n" +
+                            "                    </a>\n" +
+                            "                </div>");
+                }%>
         </div>
     </div>
 </div>

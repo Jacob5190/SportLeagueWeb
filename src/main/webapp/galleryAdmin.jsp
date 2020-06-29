@@ -38,7 +38,6 @@
             if (confirm("Do you want to delete this image from the gallery?")){
                 const option = $("#imgSelect option:selected");
                 const optVal = option.val();
-                console.log(optVal);
                 $.ajax({
                     url: "/imgDelete",
                     data: {"option": optVal},
@@ -67,7 +66,7 @@
     <div class="jumbotron">
         <div class="input-group input-group-lg">
             <span class="input-group-addon">Upload File</span>
-            <input type="file" name="picture" id="file" class="form-control">
+            <input type="file" name="picture" id="file" class="form-control" accept="image/*">
             <span class="input-group-btn">
                 <button value="Upload" onclick="uploadPics()" class="btn btn-success">Upload</button>
             </span>

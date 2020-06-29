@@ -74,7 +74,6 @@
             if (confirm("Do you want to delete this event from calendar?")) {
                 const option = $("#eventSelect option:selected");
                 const optVal = option.val();
-                console.log(optVal);
                 $.ajax({
                     url: "delEvent",
                     data: {"option": optVal},
