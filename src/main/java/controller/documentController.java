@@ -76,4 +76,9 @@ public class documentController {
 		}
 		return new ObjectMapper().writeValueAsString(docNames);
 	}
+
+	@RequestMapping("/documentsAdmin")
+	public ModelAndView documentsAdmin(){
+		return new ModelAndView("documentsAdmin.jsp");
+	}
 }

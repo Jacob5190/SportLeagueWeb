@@ -22,7 +22,29 @@
           href="resources/dateTimePicker/css/bootstrap-datetimepicker.min.css">
 </head>
 <body>
-    <div class="container" style="margin-top: 10px">
+<nav class="navbar navbar-default" style="font-size: large">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#"><img src="resources/images/home/circle-cropped.png" alt="ISL" class="navbar-brand center-block" style="padding: 3px 30px 3px 3px"></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/">Home</a></li>
+                <li class="active"><a href="#">Calendar Admin</a></li>
+                <li><a href="competition">Competitions</a></li>
+                <li><a href="documentsAdmin">Documents Admin</a></li>
+                <li><a href="galleryAdmin">Gallery Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container" style="margin-top: 10px">
         <div class="jumbotron">
             <h3>Date - Event Upload</h3>
             <div class="input-group input-group-lg">
@@ -50,7 +72,7 @@
             </div>
         </div>
     </div>
-    <script>
+<script>
         function uploadEvent() {
             var iDate = $("#inputDate").val();
             var iEvent = $("#inputEvent").val();
@@ -74,7 +96,6 @@
             if (confirm("Do you want to delete this event from calendar?")) {
                 const option = $("#eventSelect option:selected");
                 const optVal = option.val();
-                console.log(optVal);
                 $.ajax({
                     url: "delEvent",
                     data: {"option": optVal},

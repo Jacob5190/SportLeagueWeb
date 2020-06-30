@@ -16,7 +16,7 @@
     <link rel="stylesheet"
           href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <style>
-        div{
+        .jumbotron .input-group{
             padding: 10px;
             margin: 10px;
         }
@@ -24,6 +24,28 @@
 
 </head>
 <body>
+<nav class="navbar navbar-default" style="font-size: large">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="#"><img src="resources/images/home/circle-cropped.png" alt="ISL" class="navbar-brand center-block" style="padding: 3px 30px 3px 3px"></a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="/">Home</a></li>
+                <li><a href="calendarAdmin">Calendar Admin</a></li>
+                <li><a href="competition">Competitions</a></li>
+                <li class="active"><a href="#">Documents Admin</a></li>
+                <li><a href="galleryAdmin">Gallery Admin</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container" style="margin-top: 10px">
     <div class="jumbotron">
         <div class="input-group input-group-lg">

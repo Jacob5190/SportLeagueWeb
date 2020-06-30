@@ -67,4 +67,9 @@ public class calendarController{
 		session.commit();
 		session.close();
 	}
+
+	@RequestMapping("/calendarAdmin")
+	public ModelAndView calendarAdmin(){
+		return new ModelAndView("calendarAdmin.jsp");
+	}
 }

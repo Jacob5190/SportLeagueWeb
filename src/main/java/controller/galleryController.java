@@ -74,4 +74,9 @@ public class galleryController{
 		}
 		return new ObjectMapper().writeValueAsString(imgNames);
 	}
+
+	@RequestMapping("/galleryAdmin")
+	public ModelAndView galleryAdmin(){
+		return new ModelAndView("galleryAdmin.jsp");
+	}
 }

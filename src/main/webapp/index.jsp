@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>SCIE Sports League</title>
     <meta charset="UTF-8">
     <script
             src="resources/jquery-3.5.1.min.js" type="text/javascript"></script>
@@ -18,7 +18,7 @@
           href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 </head>
 <body>
-    <nav class="navbar navbar-default" style="font-size: large">
+<nav class="navbar navbar-default" style="font-size: large">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -57,7 +57,6 @@
         </div>
     </div>
 </nav>
-</div>
 <div style="padding-top: 1%"></div>
 <div class="well well-lg">
     <div class="container">
@@ -69,6 +68,9 @@
     <div class="container">
         <ul class="nav navbar-nav">
             <li></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="contact">I am Admin</a></li>
         </ul>
     </div>
 </nav>

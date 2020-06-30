@@ -17,3 +17,8 @@
         delete from calendar_event where id = #{id};
     </delete>
 </mapper>
+<mapper namespace="pojo.User">
+    <select id="selectUsr">
+        select * from
+    </select>
+</mapper>

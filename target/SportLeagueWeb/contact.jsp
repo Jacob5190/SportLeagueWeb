@@ -60,11 +60,7 @@
 <div style="padding-top: 1%"></div>
 <div class="well well-lg">
     <div class="container">
-        <ul style="font-size: large">
-            <li>Contact1...</li>
-            <li>Contact2...</li>
-            <li>Contact3...</li>
-        </ul>
+        <strong>Contact information...</strong>
     </div>
 </div>
 </body>
