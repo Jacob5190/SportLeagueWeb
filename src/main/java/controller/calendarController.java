@@ -1,8 +1,7 @@
 package controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import controller.util.SessionFactory;
-import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import pojo.CalendarEvent;
+import service.calendarEventService;
 
 import java.io.IOException;
 import java.text.DateFormat;
@@ -21,6 +21,8 @@ import java.util.List;
 
 @Controller
 public class calendarController{
+	@Autowired
+	calendarEventService calendarEventService;
 	@InitBinder
 	public void initBinder(WebDataBinder binder){
 		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -29,9 +31,8 @@ public class calendarController{
 
 	@RequestMapping("/calendar")
 	public ModelAndView handleRequest (javax.servlet.http.HttpServletRequest httpServletRequest, javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
-		ModelAndView mav = new ModelAndView("calendar.jsp");
-		SqlSession session = SessionFactory.getSession();
-		List<CalendarEvent> calendarEvents = session.selectList("selectCalendarEvent");
+		ModelAndView mav = new ModelAndView("calendar");
+		List<CalendarEvent> calendarEvents = calendarEventService.selectCalendarEvent();
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 		String json = mapper.writeValueAsString(calendarEvents);
@@ -42,18 +43,13 @@ public class calendarController{
 	@RequestMapping("/eventUpload")
 	@ResponseBody
 	public void eventUpload (CalendarEvent calendarEvent) throws IOException {
-		SqlSession session = SessionFactory.getSession();
-		session.insert("insertCalendarEvent",calendarEvent);
-		session.commit();
-		session.close();
+		calendarEventService.insertCalendarEvent(calendarEvent);
 	}
 
 	@RequestMapping("/reqEvent")
 	@ResponseBody
 	public String reqEvent () throws IOException {
-		SqlSession session = SessionFactory.getSession();
-		List<CalendarEvent> resultList = session.selectList("selectCalendarEvent");
-		session.close();
+		List<CalendarEvent> resultList = calendarEventService.selectCalendarEvent();
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd"));
 		return mapper.writeValueAsString(resultList);
@@ -61,15 +57,12 @@ public class calendarController{
 
 	@RequestMapping("/delEvent")
 	@ResponseBody
-	public void delEvent (@RequestParam("option") int option) throws IOException {
-		SqlSession session = SessionFactory.getSession();
-		session.delete("deleteCalendarEvent", option);
-		session.commit();
-		session.close();
+	public void delEvent (@RequestParam("option") int option) {
+		calendarEventService.deleteCalendarEvent(option);
 	}
 
-	@RequestMapping("/calendarAdmin")
+	@RequestMapping("/admin/calendar")
 	public ModelAndView calendarAdmin(){
-		return new ModelAndView("calendarAdmin.jsp");
+		return new ModelAndView("calendarAdmin");
 	}
 }

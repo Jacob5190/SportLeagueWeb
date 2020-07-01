@@ -2,36 +2,34 @@ package controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+import service.fileService;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class documentController {
+	@Autowired
+	fileService fileService;
+	static final String PATH = "documents";
 	@RequestMapping("/documents")
 	public ModelAndView handleRequest (javax.servlet.http.HttpServletRequest httpServletRequest, javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
-		ModelAndView mav = new ModelAndView("documents.jsp");
-		String ApplicationPath =
-				ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-		String filePath = ApplicationPath + "documents";
-		File[] files = new File(filePath).listFiles();
-		if (files != null) {
-			mav.addObject("length", files.length);
-			for (int i = 0; i < files.length; i++) {
-				if (files[i].isFile()) {
-					mav.addObject("filePath" + i, "documents\\" + files[i].getName());
-				}
+		ModelAndView mav = new ModelAndView("documents");
+		File[] files = fileService.listFile(PATH);
+		mav.addObject("length", files.length);
+		for (int i = 0; i < files.length; i++) {
+			if (files[i].isFile()) {
+				mav.addObject("filePath" + i, "documents\\" + files[i].getName());
 			}
-		}
-		else {
-			mav.addObject("length", 0);
 		}
 		return mav;
 	}
@@ -39,46 +37,29 @@ public class documentController {
 	@RequestMapping("/docUpload")
 	@ResponseBody
 	public String docUpload(@RequestParam("document")MultipartFile document) throws IOException {
-		String ApplicationPath =
-				ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-		String filePath =
-				ApplicationPath + File.separator + "documents" + File.separator + document.getOriginalFilename();
-		document.transferTo(new File(filePath));
+		fileService.saveFile(document, PATH);
 		return "success";
 	}
 
 	@RequestMapping("/delDoc")
 	@ResponseBody
 	public void delDoc(@RequestParam("option") String option){
-		String ApplicationPath =
-				ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-		String filePath = ApplicationPath + File.separator + "documents" + File.separator + option;
-		File file = new File(filePath);
-		if (file.exists()){
-			file.delete();
-		}
+		fileService.delFile(option, PATH);
 	}
 
 	@RequestMapping("/reqDocs")
 	@ResponseBody
 	public String reqDocs () throws JsonProcessingException {
-		String[] docNames;
-		String ApplicationPath =
-				ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-		String filePath = ApplicationPath + "documents";
-		File file = new File(filePath);
-		File[] files = file.listFiles();
-		docNames = new String[files.length];
-		if (files != null) {
-			for (int i = 0; i < files.length; i++){
-				docNames[i] = files[i].getName();
-			}
+		List<String> docNames = new ArrayList<>();
+		File[] files = fileService.listFile(PATH);
+		for (File file : files){
+			docNames.add(file.getName());
 		}
 		return new ObjectMapper().writeValueAsString(docNames);
 	}
 
-	@RequestMapping("/documentsAdmin")
+	@RequestMapping("/admin/documents")
 	public ModelAndView documentsAdmin(){
-		return new ModelAndView("documentsAdmin.jsp");
+		return new ModelAndView("documentsAdmin");
 	}
 }

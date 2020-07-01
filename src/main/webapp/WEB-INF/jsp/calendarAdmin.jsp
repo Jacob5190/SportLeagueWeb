@@ -11,15 +11,15 @@
     <title>Calendar Admin</title>
     <meta charset="UTF-8">
     <script
-            src="resources/jquery-3.5.1.min.js" type="text/javascript"></script>
+            src="../../resources/jquery-3.5.1.min.js" type="text/javascript"></script>
     <script
-            src="resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+            src="../../resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
-          href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+          href="../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
     <script
-            src="resources/dateTimePicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
+            src="../../resources/dateTimePicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
-          href="resources/dateTimePicker/css/bootstrap-datetimepicker.min.css">
+          href="../../resources/dateTimePicker/css/bootstrap-datetimepicker.min.css">
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">
@@ -31,15 +31,15 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#"><img src="resources/images/home/circle-cropped.png" alt="ISL" class="navbar-brand center-block" style="padding: 3px 30px 3px 3px"></a>
+            <a href="#"><img src="../../resources/images/home/circle-cropped.png" alt="ISL" class="navbar-brand center-block" style="padding: 3px 30px 3px 3px"></a>
         </div>
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav navbar-left">
                 <li><a href="/">Home</a></li>
                 <li class="active"><a href="#">Calendar Admin</a></li>
                 <li><a href="competition">Competitions</a></li>
-                <li><a href="documentsAdmin">Documents Admin</a></li>
-                <li><a href="galleryAdmin">Gallery Admin</a></li>
+                <li><a href="/admin/documents">Documents Admin</a></li>
+                <li><a href="/admin/gallery">Gallery Admin</a></li>
             </ul>
         </div>
     </div>

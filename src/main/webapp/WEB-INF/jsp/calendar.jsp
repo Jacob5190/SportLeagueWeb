@@ -11,24 +11,24 @@
     <title>Calendar</title>
     <meta charset="UTF-8">
     <script
-            src="resources/jquery-3.5.1.min.js" type="text/javascript"></script>
+            src="../../resources/jquery-3.5.1.min.js" type="text/javascript"></script>
     <script
-            src="resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+            src="../../resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
-          href="resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <link href='resources/simpleCalendar/stylesheets/fullcalendar.print.min.css' rel='stylesheet' media='print' />
+          href="../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link href='../../resources/simpleCalendar/stylesheets/fullcalendar.print.min.css' rel='stylesheet' media='print' />
     <link rel='stylesheet'
-          href='resources/simpleCalendar/stylesheets/fullcalendar.min.css'>
+          href='../../resources/simpleCalendar/stylesheets/fullcalendar.min.css'>
     <link rel='stylesheet'
-          href='resources/simpleCalendar/stylesheets/semantic.min.css'>
+          href='../../resources/simpleCalendar/stylesheets/semantic.min.css'>
     <script
-            src='resources/simpleCalendar/javascript/semantic.min.js'></script>
+            src='../../resources/simpleCalendar/javascript/semantic.min.js'></script>
     <script
-            src='resources/simpleCalendar/javascript/jquery.min.js'></script>
+            src='../../resources/simpleCalendar/javascript/jquery.min.js'></script>
     <script
-            src='resources/simpleCalendar/javascript/moment.min.js'></script>
+            src='../../resources/simpleCalendar/javascript/moment.min.js'></script>
     <script
-            src='resources/simpleCalendar/javascript/fullcalendar.min.js'></script>
+            src='../../resources/simpleCalendar/javascript/fullcalendar.min.js'></script>
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">
@@ -40,11 +40,11 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="#"><img src="resources/images/home/circle-cropped.png" alt="ISL" class="navbar-brand center-block" style="padding: 3px 30px 3px 3px"></a>
+            <a href="#"><img src="../../resources/images/home/circle-cropped.png" alt="ISL" class="navbar-brand center-block" style="padding: 3px 30px 3px 3px"></a>
         </div>
         <div class="navbar-collapse collapse" id="navbar">
             <ul class="nav navbar-nav navbar-left">
-                <li><a href="">Home</a></li>
+                <li><a href="/">Home</a></li>
                 <li class="active"><a href="#">Calendar</a></li>
                 <li><a href="competition">Competitions</a></li>
                 <li><a href="documents">Documents</a></li>
@@ -70,7 +70,7 @@
         </div>
     </div>
 </nav>
-<div style="padding-top: 1%"></div>
+<div style="margin-top: 1%"></div>
 <div class="row well well-lg">
     <div class="container col-md-3"></div>
     <div class="container col-md-6">
@@ -96,5 +96,16 @@
         </script>
     </div>
 </div>
+<div style="height: 5%"></div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <ul class="nav navbar-nav">
+            <li></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="contact">I am Admin</a></li>
+        </ul>
+    </div>
+</nav>
 </body>
 </html>
