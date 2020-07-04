@@ -70,7 +70,7 @@
             <li></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="contact">I am Admin</a></li>
+            <li><a href="admin">Login as admin</a></li>
         </ul>
     </div>
 </nav>

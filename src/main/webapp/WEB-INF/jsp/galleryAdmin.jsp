@@ -94,7 +94,6 @@
             </span>
         </div>
 
-        <ul class="nav nav-list"><li class="divider"></li></ul>
         <div class="input-group input-group-lg">
             <span class="input-group-addon">Delete File</span>
             <select id="imgSelect" class="form-control">

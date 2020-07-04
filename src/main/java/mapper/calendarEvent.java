@@ -1,4 +1,4 @@
-package mappers.calendarEvent;
+package mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 import pojo.CalendarEvent;
