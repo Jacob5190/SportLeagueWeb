@@ -31,19 +31,19 @@ public class galleryController{
 		}
 		return mav;
 	}
-	@RequestMapping("/imgUpload")
+	@RequestMapping("/admin/imgUpload")
 	@ResponseBody
 	public String imgUpload (@RequestParam ("picture") MultipartFile picture) throws Exception{
 		fileService.saveFile(picture, PATH);
 		return "success";
 	}
-	@RequestMapping("/imgDelete")
+	@RequestMapping("/admin/imgDelete")
 	@ResponseBody
 	public void imgDelete (@RequestParam("option") String option){
 		fileService.delFile(option, PATH);
 	}
 
-	@RequestMapping("/reqImgs")
+	@RequestMapping("/admin/reqImgs")
 	@ResponseBody
 	public String reqImgs () throws JsonProcessingException {
 		String[] imgNames;
@@ -62,7 +62,7 @@ public class galleryController{
 	}
 
 	@RequestMapping("/admin/gallery")
-	public ModelAndView galleryAdmin(){
-		return new ModelAndView("galleryAdmin");
+	public String galleryAdmin() {
+		return "galleryAdmin";
 	}
 }

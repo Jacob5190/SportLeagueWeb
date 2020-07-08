@@ -17,8 +17,4 @@
         <property name="prefix" value="/WEB-INF/jsp/" />
         <property name="suffix" value=".jsp" />
     </bean>
-
-    <bean id="exceptionHandlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
-    </bean>
-    <bean class="exceptionHandler.DefaultExceptionHandler"/>
 </beans>

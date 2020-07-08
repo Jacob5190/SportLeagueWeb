@@ -1,8 +1,9 @@
 package service;
 
 import org.springframework.stereotype.Repository;
+import pojo.User;
 
 @Repository("userService")
 public interface userService {
-	String getPassword(String name);
+	User getUserByName(String name);
 }

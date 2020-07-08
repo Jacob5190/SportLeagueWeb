@@ -66,6 +66,14 @@
         </div>
     </div>
 </div>
+<nav class="navbar navbar-default navbar-fixed-bottom">
+    <div class="container">
+        <p class="navbar-text navbar-left">Login as: ${userName}</p>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/admin/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
 <script>
     function uploadDocs() {
         var params = new FormData();

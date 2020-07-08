@@ -1,4 +1,4 @@
-<%--
+<%@ page import="org.apache.shiro.SecurityUtils" %><%--
   Created by IntelliJ IDEA.
   User: Jacob
   Date: 2020/5/27
@@ -67,13 +67,24 @@
 <div style="height: 5%"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-        <ul class="nav navbar-nav">
-            <li></li>
-        </ul>
+        <p class="navbar-text navbar-left" id="userNameText">Login as: ${sessionScope.userName}</p>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="admin">Login as admin</a></li>
+            <li><a id="adminLink"></a></li>
         </ul>
     </div>
 </nav>
+<script>
+    function adminLink() {
+        if ("" === "${sessionScope.userName}") {
+            $("#userNameText").hide();
+            $("#adminLink").attr("href", "admin");
+            $("#adminLink").html("Login as admin")
+        }else {
+            $("#adminLink").attr("href", "admin/calendar");
+            $("#adminLink").html("Admin page")
+        }
+    }
+    window.onload = adminLink();
+</script>
 </body>
 </html>

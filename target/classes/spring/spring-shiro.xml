@@ -5,9 +5,8 @@
 <bean id="filterChainDefinitions" class="java.lang.String">
     <constructor-arg>
         <value>
-            /admin/login = anon
             /admin/logout = logout
-            /admin/** = authc
+            /admin/** = user
             /** = anon
         </value>
     </constructor-arg>
@@ -15,7 +14,6 @@
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
         <property name="loginUrl" value="/admin" />
         <property name="successUrl" value="/admin/calendar" />
-        <property name="unauthorizedUrl" value="/admin/error/unauthorizedUrl" />
         <property name="securityManager" ref="securityManager" />
         <property name="filterChainDefinitions" ref="filterChainDefinitions" />
         <property name="filters">

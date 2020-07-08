@@ -11,11 +11,11 @@ public class UserServiceImpl implements userService {
 	@Autowired
 	user user;
 	@Override
-	public String getPassword (String name) {
+	public User getUserByName (String name) {
 		User u = user.selectUser(name);
 		if (null == u){
 			return null;
 		}
-		return u.getPassword();
+		return u;
 	}
 }

@@ -17,51 +17,37 @@
           href="../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
 </head>
 <body>
-<div>
-    ${error}
-</div>
 <div class="container-fluid" style="height: 100%">
     <div class="well well-lg" style="top: 40%; position: relative; transform: translateY(-50%);padding: 50px; padding-top: 26px">
         <div class="container" style="width: 50%">
             <div class="text-center container-fluid" style="margin-bottom: 10px">
                 <h3><strong>Login as administrator</strong></h3>
             </div>
-            <div class="input-group input-group-lg" style="margin-bottom: 2%">
+            <form action="/admin" method="post">
+                <div class="input-group input-group-lg" style="margin-bottom: 2%">
                 <span class="input-group-addon">Username</span>
-                <input class="form-control" type="text" id="username">
+                <input class="form-control" type="text" name="username">
             </div>
-            <div class="input-group input-group-lg">
+                <div class="input-group input-group-lg">
                 <span class="input-group-addon">Password</span>
-                <input class="form-control" type="password" id="password">
+                <input class="form-control" type="password" name="password">
                 <span class="input-group-btn">
-                    <button class="btn btn-success" onclick="login()">Submit</button>
+                    <input type="submit" class="btn btn-success" value="Login">
                 </span>
             </div>
+            </form>
+            <div class="text-danger">${error}</div>
         </div>
     </div>
 </div>
 <div style="height: 5%"></div>
 <nav class="navbar navbar-default navbar-fixed-bottom">
     <div class="container">
-        <ul class="nav navbar-nav">
-            <li></li>
-        </ul>
         <ul class="nav navbar-nav navbar-right">
             <li><a href="admin">Login as admin</a></li>
         </ul>
     </div>
 </nav>
-<script>
-    function login() {
-        var username = $("#username").val();
-        var password = $("#password").val();
-        console.log(username);
-        console.log(password);
-        $.post("/admin/login", {
-            username:username,
-            password:password
-        });
-    }
-</script>
+
 </body>
 </html>

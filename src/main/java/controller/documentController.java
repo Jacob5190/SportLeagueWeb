@@ -34,20 +34,20 @@ public class documentController {
 		return mav;
 	}
 
-	@RequestMapping("/docUpload")
+	@RequestMapping("admin/docUpload")
 	@ResponseBody
 	public String docUpload(@RequestParam("document")MultipartFile document) throws IOException {
 		fileService.saveFile(document, PATH);
 		return "success";
 	}
 
-	@RequestMapping("/delDoc")
+	@RequestMapping("admin/delDoc")
 	@ResponseBody
 	public void delDoc(@RequestParam("option") String option){
 		fileService.delFile(option, PATH);
 	}
 
-	@RequestMapping("/reqDocs")
+	@RequestMapping("admin/reqDocs")
 	@ResponseBody
 	public String reqDocs () throws JsonProcessingException {
 		List<String> docNames = new ArrayList<>();

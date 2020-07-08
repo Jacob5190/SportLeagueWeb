@@ -40,13 +40,13 @@ public class calendarController{
 		return mav;
 	}
 
-	@RequestMapping("/eventUpload")
+	@RequestMapping("/admin/eventUpload")
 	@ResponseBody
 	public void eventUpload (CalendarEvent calendarEvent) throws IOException {
 		calendarEventService.insertCalendarEvent(calendarEvent);
 	}
 
-	@RequestMapping("/reqEvent")
+	@RequestMapping({"/reqEvent", "/admin/reqEvent"})
 	@ResponseBody
 	public String reqEvent () throws IOException {
 		List<CalendarEvent> resultList = calendarEventService.selectCalendarEvent();
@@ -55,7 +55,7 @@ public class calendarController{
 		return mapper.writeValueAsString(resultList);
 	}
 
-	@RequestMapping("/delEvent")
+	@RequestMapping("/admin/delEvent")
 	@ResponseBody
 	public void delEvent (@RequestParam("option") int option) {
 		calendarEventService.deleteCalendarEvent(option);
