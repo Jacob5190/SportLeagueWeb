@@ -15,13 +15,13 @@
             src="../../resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
           href="../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="icon" href="${pageContext.request.contextPath }/resources/favicon.ico">
     <style>
         .jumbotron .input-group{
             padding: 10px;
             margin: 10px;
         }
     </style>
-
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">
@@ -46,6 +46,7 @@
         </div>
     </div>
 </nav>
+<div style="padding-top: 1%"></div>
 <div class="container" style="margin-top: 10px">
     <div class="jumbotron">
         <div class="input-group input-group-lg">
@@ -80,7 +81,7 @@
         var files = $("#file")[0].files;
         params.append("document", files[0]);
         $.ajax({
-            url: "/docUpload",
+            url: "/admin/docUpload",
             type: "post",
             contentType: false,
             processData: false,
@@ -98,7 +99,7 @@
             const option = $("#docSelect option:selected");
             const optVal = option.val();
             $.ajax({
-                url: "delDoc",
+                url: "/admin/delDoc",
                 data: {"option": optVal},
                 type: "post",
                 success: function () {
@@ -114,7 +115,7 @@
 
     function getDocs() {
         $.ajax({
-            url: "reqDocs",
+            url: "/admin/reqDocs",
             success: function (data) {
                 var docs = JSON.parse(data);
                 var opt = "";

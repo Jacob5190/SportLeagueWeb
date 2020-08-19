@@ -16,6 +16,7 @@
             src="../../resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
           href="../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <link rel="icon" href="${pageContext.request.contextPath }/resources/favicon.ico">
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">

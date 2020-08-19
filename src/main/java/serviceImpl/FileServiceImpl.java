@@ -19,14 +19,14 @@ public class FileServiceImpl implements fileService {
 	@Override
 	public void saveFile (MultipartFile document, String path) throws IOException {
 		String filePath =
-				APPLICATION_PATH + File.separator + "path" + File.separator + document.getOriginalFilename();
+				APPLICATION_PATH + File.separator + path + File.separator + document.getOriginalFilename();
 		document.transferTo(new File(filePath));
 	}
 
 	@Override
 	public void delFile (String option, String path) {
 		String filePath =
-				APPLICATION_PATH + File.separator + "path" + File.separator + option;
+				APPLICATION_PATH + File.separator + path + File.separator + option;
 		File file = new File(filePath);
 		if (file.exists()){
 			file.delete();

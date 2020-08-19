@@ -15,47 +15,10 @@
             src="../../resources/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
           href="../../resources/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-    <script>
-        function getImgs() {
-            $.ajax({
-                url: "/reqImgs",
-                success: function (data) {
-                    var imgArr = $.parseJSON(data);
-                    var opt = "";
-                    for (i = 0; i < imgArr.length; i++) {
-                        opt += "<option value='" + imgArr[i] + "'>" + imgArr[i] + "</option>\n";
-                    }
-                    $("#imgSelect").html(opt);
-                },
-                error: function (err){
-                    console.log(err)
-                },
-                type: "get",
-                dataType: "text"
-            })
-        }
-        function delImgs() {
-            if (confirm("Do you want to delete this image from the gallery?")){
-                const option = $("#imgSelect option:selected");
-                const optVal = option.val();
-                $.ajax({
-                    url: "/imgDelete",
-                    data: {"option": optVal},
-                    type: "post",
-                    success: function () {
-                        alert("File delete successfully.");
-                        location.reload();
-                    },
-                    error: function (error) {
-                        console.log(error)
-                    }
-                })
-            }
-        }
-        window.onload = getImgs();
-    </script>
+    <link rel="icon" href="${pageContext.request.contextPath }/resources/favicon.ico">
     <style>
         .jumbotron .input-group{
+            padding: 10px;
             margin: 10px;
         }
     </style>
@@ -114,22 +77,62 @@
 </nav>
 <script>
     function uploadPics() {
-        var params = new FormData();
-        var files = $("#file")[0].files;
-        params.append("picture", files[0]);
-        $.ajax({
-            url: "/imgUpload",
-            type: "post",
-            contentType: false,
-            processData: false,
-            cache: false,
-            data: params,
-            success: function () {
-                alert("File Upload successfully");
-                getImgs();
-            }
-        });
+    var params = new FormData();
+    var files = $("#file")[0].files;
+    params.append("picture", files[0]);
+    $.ajax({
+        url: "/admin/imgUpload",
+        type: "post",
+        contentType: false,
+        processData: false,
+        cache: false,
+        data: params,
+        success: function () {
+            alert("File Upload successfully");
+            getImgs();
+        }
+    });
+}
+
+    function delImgs() {
+        if (confirm("Do you want to delete this image from the gallery?")){
+            const option = $("#imgSelect option:selected");
+            const optVal = option.val();
+            $.ajax({
+                url: "/admin/imgDelete",
+                data: {"option": optVal},
+                type: "post",
+                success: function () {
+                    alert("File delete successfully.");
+                    location.reload();
+                },
+                error: function (error) {
+                    console.log(error)
+                }
+            })
+        }
     }
+
+    function getImgs() {
+        $.ajax({
+            url: "/admin/reqImgs",
+            success: function (data) {
+                var imgArr = $.parseJSON(data);
+                var opt = "";
+                for (i = 0; i < imgArr.length; i++) {
+                    opt += "<option value='" + imgArr[i] + "'>" + imgArr[i] + "</option>\n";
+                }
+                $("#imgSelect").html(opt);
+            },
+            error: function (err){
+                console.log(err)
+            },
+            type: "get",
+            dataType: "text"
+        })
+    }
+
+    window.onload = getImgs();
 </script>
 </body>
 </html>

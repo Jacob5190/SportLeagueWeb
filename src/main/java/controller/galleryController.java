@@ -7,12 +7,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.ContextLoader;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import service.fileService;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class galleryController{
@@ -23,7 +24,11 @@ public class galleryController{
 	public ModelAndView handleRequest (javax.servlet.http.HttpServletRequest httpServletRequest, javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
 		ModelAndView mav = new ModelAndView("gallery");
 		File[] files = fileService.listFile(PATH);
-		mav.addObject("length", files.length);
+		if (files != null) {
+			mav.addObject("length", files.length);
+		}else {
+			mav.addObject("length", 0);
+		}
 		for (int i = 0; i < files.length; i++) {
 			if (files[i].isFile()) {
 				mav.addObject("filePath" + i, "galleryImages\\" + files[i].getName());
@@ -46,17 +51,10 @@ public class galleryController{
 	@RequestMapping("/admin/reqImgs")
 	@ResponseBody
 	public String reqImgs () throws JsonProcessingException {
-		String[] imgNames;
-		String ApplicationPath =
-				ContextLoader.getCurrentWebApplicationContext().getServletContext().getRealPath("/");
-		String filePath = ApplicationPath + PATH;
-		File file = new File(filePath);
+		List<String> imgNames = new ArrayList<>();
 		File[] files = fileService.listFile(PATH);
-		imgNames = new String[files.length];
-		if (files != null) {
-			for (int i = 0; i < files.length; i++){
-				imgNames[i] = files[i].getName();
-			}
+		for (File file : files) {
+			imgNames.add(file.getName());
 		}
 		return new ObjectMapper().writeValueAsString(imgNames);
 	}

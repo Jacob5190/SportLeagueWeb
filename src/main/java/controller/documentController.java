@@ -25,7 +25,11 @@ public class documentController {
 	public ModelAndView handleRequest (javax.servlet.http.HttpServletRequest httpServletRequest, javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
 		ModelAndView mav = new ModelAndView("documents");
 		File[] files = fileService.listFile(PATH);
-		mav.addObject("length", files.length);
+		if (files != null) {
+			mav.addObject("length", files.length);
+		}else {
+			mav.addObject("length", 0);
+		}
 		for (int i = 0; i < files.length; i++) {
 			if (files[i].isFile()) {
 				mav.addObject("filePath" + i, "documents\\" + files[i].getName());

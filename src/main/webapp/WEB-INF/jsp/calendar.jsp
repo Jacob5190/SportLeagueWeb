@@ -29,6 +29,7 @@
             src='../../resources/simpleCalendar/javascript/moment.min.js'></script>
     <script
             src='../../resources/simpleCalendar/javascript/fullcalendar.min.js'></script>
+    <link rel="icon" href="${pageContext.request.contextPath }/resources/favicon.ico">
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">

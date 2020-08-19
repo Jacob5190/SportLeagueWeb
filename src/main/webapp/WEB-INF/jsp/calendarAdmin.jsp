@@ -20,6 +20,7 @@
             src="../../resources/dateTimePicker/js/bootstrap-datetimepicker.min.js" type="text/javascript"></script>
     <link rel="stylesheet"
           href="../../resources/dateTimePicker/css/bootstrap-datetimepicker.min.css">
+    <link rel="icon" href="${pageContext.request.contextPath }/resources/favicon.ico">
 </head>
 <body>
 <nav class="navbar navbar-default" style="font-size: large">
@@ -85,7 +86,7 @@
             var iDate = $("#inputDate").val();
             var iEvent = $("#inputEvent").val();
             $.ajax({
-                url: "/eventUpload",
+                url: "/admin/eventUpload",
                 type: "post",
                 data: {
                     "startDate": iDate,
@@ -105,7 +106,7 @@
                 const option = $("#eventSelect option:selected");
                 const optVal = option.val();
                 $.ajax({
-                    url: "delEvent",
+                    url: "/admin/delEvent",
                     data: {"option": optVal},
                     type: "post",
                     success: function () {
@@ -121,7 +122,7 @@
 
         function getEvent() {
             $.ajax({
-                url: "reqEvent",
+                url: "/admin/reqEvent",
                 success: function (data) {
                     var events = JSON.parse(data);
                     console.log(events);
